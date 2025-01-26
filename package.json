@@ -1,0 +1,16 @@
+{
+  "name": "alyoriabot",
+  "version": "2.0.0",
+  "description": "Alyoria is a full-featured, open-source, multi-purpose bot discord.",
+  "license": "GPL-3.0",
+  "author": "Plhume (Nyx)",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js": "^14.17.3"
+  }
+}
