@@ -2,6 +2,14 @@
   "name": "alyoriabot",
   "version": "2.0.0",
   "description": "Alyoria is a full-featured, open-source, multi-purpose bot discord.",
+  "homepage": "https://github.com/Alyoria/AlyoriaBot#readme",
+  "bugs": {
+    "url": "https://github.com/Alyoria/AlyoriaBot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alyoria/AlyoriaBot.git"
+  },
   "license": "GPL-3.0",
   "author": "Plhume (Nyx)",
   "type": "commonjs",
@@ -12,5 +20,6 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "discord.js": "^14.17.3"
-  }
+  },
+  "devDependencies": {}
 }
