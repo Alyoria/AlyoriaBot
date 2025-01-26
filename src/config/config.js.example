@@ -1,0 +1,37 @@
+class Config {
+    CLIENT = {
+        TOKEN: "",
+        ID: "",
+        OWNERS: []
+    };
+
+    SUPPORT = {
+        ID: "",
+        INVITE: "",
+        CHANNELS: {
+            MAIN_LOGS: "",
+            TICKETS_LOGS: "",
+            ANONYM_LOGS: "",
+            ARRIVALS: "",
+            RULES: "",
+            ANNOUNCEMENTS: "",
+            GENERAL: "",
+            ANONYM: "",
+            AUTO_VOCAL: "",
+            TICKETS_PARENT: "", // Is a category
+            STATS_MEMBERS: "",
+            STATS_MEMBER: "",
+            STATS_BOTS: ""
+        }
+    };
+
+    PRESENCE = {
+        STATUS: "",
+        ACTIVITY: [{
+            NAME: "",
+            TYPE: ActivityType.Playing
+        }]
+    };
+}
+
+module.exports = new Config();
