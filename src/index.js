@@ -1,8 +1,13 @@
-const { Client, GatewayIntentBits, Partials } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, REST, Routes } = require("discord.js");
+const fs = require('fs');
+const path = require('path');
+
 const Logger = require('./utils/logger.js');
 const Config = require('./config/config');
 
 const CommandHandler = require('./handlers/commandHandler.js');
+const EventHandler = require('./handlers/eventHandler.js');
+
 class Alyoria {
     constructor() {
         this.client = new Client({
@@ -65,7 +70,10 @@ class Alyoria {
             this.logger.clear();
             this.logger.info(`Connecting to Discord...`);
 
+            await this.deployCommands();
+
             this.commandHandler.loadCommands('./src/commands');
+            this.eventHandler.loadEvents('./src/events');
 
             await this.client.login(this.config.CLIENT.TOKEN);
 
