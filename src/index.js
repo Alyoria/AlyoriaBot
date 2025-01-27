@@ -2,6 +2,7 @@ const { Client, GatewayIntentBits, Partials } = require("discord.js");
 const Logger = require('./utils/logger.js');
 const Config = require('./config/config');
 
+const CommandHandler = require('./handlers/commandHandler.js');
 class Alyoria {
     constructor() {
         this.client = new Client({
@@ -30,12 +31,41 @@ class Alyoria {
         });
         this.config = Config;
         this.logger = Logger;
+
+        this.commandHandler = new CommandHandler(this.client, this.logger);
+        this.eventHandler = new EventHandler(this.client, this.logger);
+    }
+
+    async deployCommands() {
+        try {
+            const commands = [];
+            const commandsPath = path.resolve('./src/commands');
+            const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+            for (const file of commandFiles) {
+                const command = require(`${commandsPath}/${file}`);
+                commands.push(command.data.toJSON());
+            }
+
+            const rest = new REST({ version: '10' }).setToken(this.config.CLIENT.TOKEN);
+
+            await rest.put(
+                Routes.applicationGuildCommands(this.config.CLIENT.ID, this.config.SUPPORT.ID),
+                { body: commands }
+            );
+
+            this.logger.info('Successfully deployed commands!');
+        } catch (error) {
+            this.logger.error(`Error while deploying commands: ${error}`);
+        }
     }
 
     async start() {
         try {
             this.logger.clear();
             this.logger.info(`Connecting to Discord...`);
+
+            this.commandHandler.loadCommands('./src/commands');
 
             await this.client.login(this.config.CLIENT.TOKEN);
 
