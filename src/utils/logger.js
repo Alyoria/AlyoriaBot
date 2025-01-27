@@ -2,23 +2,23 @@ const chalk = require('chalk');
 
 class Logger {
   info(message) {
-    console.log(chalk.gray(`[${this.time()}] - ${chalk.blue('[INFO]')} ${message}`));
+    console.log(chalk.gray(`[${this.time()}] - ${chalk.blue('[INFO]')} ${chalk.white(message)}`));
   }
 
   success(message) {
-    console.log(chalk.gray(`[${this.time()}] - ${chalk.green('[SUCCESS]')} ${message}`));
+    console.log(chalk.gray(`[${this.time()}] - ${chalk.green('[SUCCESS]')} ${chalk.white(message)}`));
   }
 
   warn(message) {
-    console.log(chalk.gray(`[${this.time()}] - ${chalk.yellow('[WARN]')} ${message}`));
+    console.log(chalk.gray(`[${this.time()}] - ${chalk.yellow('[WARN]')} ${chalk.white(message)}`));
   }
 
   error(message) {
-    console.log(chalk.gray(`[${this.time()}] - ${chalk.red('[ERROR]')} ${message}`));
+    console.log(chalk.gray(`[${this.time()}] - ${chalk.red('[ERROR]')} ${chalk.white(message)}`));
   }
 
   debug(message) {
-    console.log(chalk.gray(`[${this.time()}] - ${chalk.cyan('[DEBUG]')} ${message}`));
+    console.log(chalk.gray(`[${this.time()}] - ${chalk.cyan('[DEBUG]')} ${chalk.white(message)}`));
   }
 
   time() {
